@@ -1,13 +1,12 @@
-from flask import Flask, jsonify
-import os
+from flask import redirect, url_for
+from app import create_app
 
-app = Flask(__name__)
+app = create_app()
 
+# waitress-serve --listen=127.0.0.1:5000 main:app 
+#pyinstaller --onefile --paths=./venv/Lib/site-packages --add-data './app/templates;templates' --add-data './app/static;static' --add-data "venv\Lib\site-packages\flask_bootstrap\templates\bootstrap;/templates/bootstrap" .\main.py
+#heroku git:remote -a rfc-actas 
+#git push heroku master
 
-@app.route('/')
-def index():
-    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
-
-
-if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+if __name__ == "__main__":
+    app.run()
