@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: waitress-serve --channel-timeout=1000 --port=$PORT main:app
